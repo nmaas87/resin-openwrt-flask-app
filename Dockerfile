@@ -1,19 +1,13 @@
-FROM nmaas87/docker-openwrt:15.05.1_rpi
+FROM nmaas87/rpi-openwrt:15.05.1_rpi
+#FROM nmaas87/docker-openwrt:15.05.1_x86
 
-# Update opkg Package List
-RUN opkg update  
-
-# Install python 2.7
-RUN opkg install wget ca-certificates && opkg install libffi && opkg install libopenssl && opkg install python-openssl &&  opkg install python
-
-# Install pip
-RUN cd /tmp && wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py
-
-# Install flask
-RUN pip install --no-cache-dir Flask
-
-# Create src dir
-RUN mkdir /app/ /app/templates
+# Update opkg Package List, Install python 2.7, pip, Flask and create directories
+RUN opkg update && \
+    opkg install wget ca-certificates libffi libopenssl python-openssl python && \
+    cd /tmp && \ 
+    wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py && \
+    pip install --no-cache-dir Flask && \
+    mkdir /app/ /app/templates
 
 # copy files required for the app to run
 COPY app.py /app/
@@ -25,6 +19,37 @@ EXPOSE 80
 # run the application
 CMD ["python", "/app/app.py"]
 
+
+
+
+
+#FROM nmaas87/rpi-openwrt:15.05.1_rpi
+#FROM nmaas87/docker-openwrt:15.05.1_x86
+
+# Update opkg Package List
+#RUN opkg update  
+
+# Install python 2.7
+#RUN opkg install wget ca-certificates libffi libopenssl python-openssl python
+
+# Install pip
+#RUN cd /tmp && wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py
+
+# Install flask
+#RUN pip install --no-cache-dir Flask
+
+# Create src dir
+#RUN mkdir /app/ /app/templates
+
+# copy files required for the app to run
+#COPY app.py /app/
+#COPY templates/index.html /app/templates/
+
+# tell the port number the container should expose
+#EXPOSE 80
+
+# run the application
+#CMD ["python", "/app/app.py"]
 
 
 
