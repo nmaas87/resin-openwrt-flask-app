@@ -1,5 +1,5 @@
-FROM nmaas87/rpi-openwrt:15.05.1_rpi
-#FROM nmaas87/docker-openwrt:15.05.1_x86
+FROM nmaas87/rpi-openwrt:15.05_rpi
+#FROM nmaas87/docker-openwrt:15.05_x86
 
 # Update opkg Package List, Install python 2.7, pip, Flask and create directories
 RUN opkg update && \
@@ -17,6 +17,7 @@ COPY templates/index.html /app/templates/
 EXPOSE 80
 
 # run the application
+#CMD /sbin/init
 CMD ["python", "/app/app.py"]
 
 
