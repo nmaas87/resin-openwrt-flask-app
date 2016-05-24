@@ -1,6 +1,6 @@
 ## resin-openwrt-flask-app
 
-Simple Flask App with OpenWRT 15.05.1 (RPi) from [https://hub.docker.com/r/nmaas87/rpi-openwrt/][https://hub.docker.com/r/nmaas87/rpi-openwrt/] and Flask
+Simple Flask App with OpenWRT 15.05.1 (RPi) from [nmaas87/rpi-openwrt][nmaas87/rpi-openwrt] and Flask
 
 This is a simple skeleton Flask server project that works RPi devices.
 
@@ -20,14 +20,16 @@ $ git push resin master
 ```
 It should take a few minutes for the code to push. While you wait, lets enable device URLs so we can see the server outside of our local network. This option can be found in the `Actions` tab in your device dashboard.
 
-![Actions Tab](/img/enable-public-URLs.png)
-
-Once the device is updated, you should see this in your logs:
-![log output](/img/log-output.png)
+Once the device is updated, you should see "* Running on http://127.0.0.1:80/" in the device log.
 
 Then in your browser you should be able to open the device URL and see the message "Hello World!".
 
 
+Basic Readme taken from: https://github.com/resin-io-projects/simple-server-node
+Flask Example taken from: https://github.com/docker/docker-birthday-3
+
+
+[nmaas87/rpi-openwrt]:https://hub.docker.com/r/nmaas87/rpi-openwrt/
 [resin-link]:https://resin.io/
 [signup-page]:https://dashboard.resin.io/signup
 [gettingStarted-link]:http://docs.resin.io/#/pages/installing/gettingStarted.md
